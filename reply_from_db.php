@@ -46,7 +46,7 @@ function replyFromDB($inputMsg) {
     $rand_keys = array_rand($row, 1);
     $textReply = $row[$rand_keys];
     error_log(serialize($textReply));
-    return $textReply[$rand_keys]{'ReplyMassage'};
+    return $textReply[$rand_keys]['ReplyMassage'];
 
 
   } else {
