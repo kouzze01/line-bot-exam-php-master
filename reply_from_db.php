@@ -41,8 +41,8 @@ function replyFromDB($inputMsg) {
   if ($queryrResult) {
     // output data of each row
     $conn->close();
-    $result = $sql;
-    return $sql;
+    
+    return $queryrResult;
 
   } else {
       echo "0 results";
