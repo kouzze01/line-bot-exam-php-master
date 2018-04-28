@@ -15,7 +15,8 @@ $db = substr($url["path"], 1);
 
 testConnection();
 function testConnection(){
-  echo $url." ".$server." ".$username." ".$password." ".$db;
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+  echo $url;
 
 }
 
