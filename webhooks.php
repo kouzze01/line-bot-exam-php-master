@@ -25,7 +25,9 @@ if (!is_null($events['events'])) {
 				$replyStr = get_string_between($text,',"','")');
 				$replyTextMsg = teachToDB($inputStr,$replyStr);
 			}else{
-				$replyTextMsg = replyFromDB($text);
+				if(startsWith($text,"!")){
+					$replyTextMsg = replyFromDB($text);
+				}
 			}
 
 			// Reply message Logic //
