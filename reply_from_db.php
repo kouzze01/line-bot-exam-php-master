@@ -38,9 +38,7 @@ function replyFromDB($inputMsg) {
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     // output data of each row
-      while($row = $result->fetch_assoc()) {
-          $result = "id: " . $row["ID"]. " - Name: " . $row["InputMassage"]. " " . $row["ReplyMassage"]. "<br>";
-      }
+
   } else {
       echo "0 results";
   }
@@ -62,7 +60,7 @@ function replyFromDB($inputMsg) {
   // }
   $conn->close();
 
-  return $result;
+  return (string)$result;
 
 
 }
