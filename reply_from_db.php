@@ -13,7 +13,11 @@ $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 
-replyFromDB('555');
+testConnection();
+function testConnection(){
+  echo $url." ".$server." ".$username." ".$password." ".$db;
+
+}
 
 function teachToDB($inputMsg) {
 
