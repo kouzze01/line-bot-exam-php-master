@@ -49,7 +49,7 @@ function replyFromDB($inputMsg) {
   //     echo "0 results";
   //     return $replyTeachMessage;
   // }
-  $conn->close();
+  mysqli_close($con);
 
   return $result;
 
