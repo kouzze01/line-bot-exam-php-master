@@ -34,11 +34,13 @@ function replyFromDB($inputMsg) {
   $result = "ควยไรมึง";
 
   //execute the SQL query and return records
-   $sql = 'SELECT * FROM linebot';
+   $sql = 'SELECT * FROM linebot where InputMessage='.$inputMsg;
   //
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     // output data of each row
+    $conn->close();
+    return $result->num_rows;
 
   } else {
       echo "0 results";
@@ -61,7 +63,7 @@ function replyFromDB($inputMsg) {
   // }
   $conn->close();
 
-  return (string)$result;
+  return $result;
 
 
 }
