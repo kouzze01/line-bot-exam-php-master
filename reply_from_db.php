@@ -2,15 +2,9 @@
 
 // //
 
-$replyTeachMessage = "คือไรอ่ะ งง สอนเราหน่อยใช้คำสั่ง : \"input(\"ข้อความถาม\",\"ข้อความตอบ\")\"";
 $replyTeachMessageSuccess = "เราเข้าใจนายแล้ว";
 // DB Connection //
 
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$server = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$db = substr($url["path"], 1);
 //echo $url." ".$server." ".$username." ".$password." ".$db;
 //$conn = new mysqli($server, $username, $password, $db);
 
@@ -20,6 +14,7 @@ function teachToDB($inputMsg) {
 }
 
 function replyFromDB($inputMsg) {
+  $replyTeachMessage = "คือไรอ่ะ งง สอนเราหน่อยใช้คำสั่ง : \"input(\"ข้อความถาม\",\"ข้อความตอบ\")\"";
   $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
   $server = $url["host"];
   $username = $url["user"];
