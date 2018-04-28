@@ -24,8 +24,8 @@ function teachToDB($inputMsg) {
 function replyFromDB($inputMsg) {
   $conn = mysqli_connect($server, $username, $password, $db);
   // Check connection
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
+  if (mysqli_connect_errno()){
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
 
