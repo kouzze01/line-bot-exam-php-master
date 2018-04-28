@@ -6,9 +6,12 @@ $replyTeachMessage = "คือไรอ่ะ งง สอนเราหน�
 $replyTeachMessageSuccess = "เราเข้าใจนายแล้ว";
 // DB Connection //
 
-$username = "iyaphatt";
-$password = "RhRiyd2774";
-$hostname = "103.86.51.212";
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
 
 
 
@@ -18,16 +21,10 @@ function teachToDB($inputMsg) {
 }
 
 function replyFromDB($inputMsg) {
-  //connection to the database
-  $dbhandle = mysql_connect($hostname, $username, $password)
-   or die("Unable to connect to MySQL");
-  echo "Connected to MySQL<br>";
-  //select a database to work with
-  $selected = mysql_select_db("test",$dbhandle)
-    or die("Could not select examples");
+  $conn = new mysqli($server, $username, $password, $db);
 
-  //execute the SQL query and return records
-  $result = mysql_query("SELECT ID,InputMassage,ReplyMassage FROM Line_DB where InputMassage=".$inputMsg);
+  $result = $conn->query("SELECT ID,InputMassage,ReplyMassage FROM Line_DB where InputMassage=".$inputMsg)
+
   if (mysql_num_rows($result)==0) {
 
     mysql_close($dbhandle);
