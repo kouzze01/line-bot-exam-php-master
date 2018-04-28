@@ -41,13 +41,15 @@ function replyFromDB($inputMsg) {
   $queryrResult = $conn->query($sql);
   if (mysqli_num_rows($queryrResult)>0) {
     // output data of each row
-    $returnResult = mysqli_num_rows($queryrResult);
-
-    return $returnResult;
+    //$returnResult = mysqli_num_rows($queryrResult);
+    $row = $queryrResult->fetch_row();
+    $rand_keys = array_rand($row, 1);
+    $textReply = $row[$rand_keys[0]];
+    return $textReply;
 
 
   } else {
-      return $inputMsg;
+      return $replyTeachMessage;
   }
 
   // if ($result->num_rows > 0) {
