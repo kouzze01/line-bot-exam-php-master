@@ -28,7 +28,7 @@ function replyFromDB($inputMsg) {
 
   $conn = new mysqli($server, $username, $password, $db);
   $conn->set_charset("utf8");
-  error_log("id: " . $url. " - Name: " . $server. " " .$username. "<br> " .$password. "<br> " .$db, 0);
+
   // Check connection
   if (mysqli_connect_errno()){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -45,6 +45,7 @@ function replyFromDB($inputMsg) {
     $row = $queryrResult->fetch_row();
     $rand_keys = array_rand($row, 1);
     $textReply = $row[$rand_keys[0]];
+    error_log($textReply);
     return $textReply['ReplyMassage'];
 
 
