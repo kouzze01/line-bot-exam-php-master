@@ -46,7 +46,8 @@ function replyFromDB($inputMsg) {
     $rand_keys = array_rand($row, 1);
     $textReply = $row[$rand_keys];
     error_log(serialize($textReply));
-    return $textReply[$rand_keys][3];
+    mysqli_free_result($queryrResult);
+    return serialize($textReply);
 
 
   } else {
