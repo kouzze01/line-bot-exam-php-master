@@ -29,9 +29,9 @@ function replyFromDB($inputMsg) {
   $result = "ควยไรมึง";
 
   //execute the SQL query and return records
-  // $sql = "SELECT ID,InputMassage,ReplyMassage FROM linebot where InputMassage=".$inputMsg;
+   $sql = "SELECT ID,InputMassage,ReplyMassage FROM linebot where InputMassage=".$inputMsg;
   //
-  // $result = mysqli_query($conn,$sql);
+   $result = mysqli_query($conn,$sql);
 
   // if ($result->num_rows > 0) {
   //     // output data of each row
