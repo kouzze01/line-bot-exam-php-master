@@ -40,9 +40,10 @@ function replyFromDB($inputMsg) {
   $queryrResult = $conn->query($sql);
   if ($queryrResult) {
     // output data of each row
-    $conn->close();
+    $returnResult = mysqli_num_rows($queryrResult);
+    $queryrResult->close();
+    return $returnResult;
 
-    return $queryrResult;
 
   } else {
       return "0 results";
