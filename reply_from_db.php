@@ -64,7 +64,7 @@ function replyFromDB($inputMsg) {
 
   $conn = new mysqli($server, $username, $password, $db);
   $conn->set_charset("utf8");
-   $inputMsg = get_string_between($inputMsg,"!","");
+  $inputMsg = substr($inputMsg,1);
   // Check connection
   if (mysqli_connect_errno()){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -72,7 +72,7 @@ function replyFromDB($inputMsg) {
   $result = "ควยไรมึง";
 
   //execute the SQL query and return records
-   $sql = "SELECT * FROM linebot where InputMassage='".$inputMsg."'";
+  $sql = "SELECT * FROM linebot where InputMassage='".$inputMsg."'";
   //
   $queryrResult = $conn->query($sql);
   if (mysqli_num_rows($queryrResult)>0) {
