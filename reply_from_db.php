@@ -31,7 +31,11 @@ function replyFromDB($inputMsg) {
   //execute the SQL query and return records
    $sql = "SELECT ID,InputMassage,ReplyMassage FROM linebot where InputMassage=".$inputMsg;
   //
-   $result = mysqli_query($conn,$sql);
+   if($result = mysqli_query($conn,$sql)){
+
+     $result = mysqli_fetch_row($result);
+
+   }
 
   // if ($result->num_rows > 0) {
   //     // output data of each row
