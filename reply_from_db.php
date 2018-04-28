@@ -40,7 +40,7 @@ function replyFromDB($inputMsg) {
   if ($result->num_rows > 0) {
     // output data of each row
     $conn->close();
-    return $result->num_rows;
+    return $sql;
 
   } else {
       echo "0 results";
