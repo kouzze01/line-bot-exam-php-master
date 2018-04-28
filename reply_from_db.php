@@ -12,14 +12,7 @@ $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 //echo $url." ".$server." ".$username." ".$password." ".$db;
-$conn = new mysqli($server, $username, $password, $db);
-
-testConnection();
-function testConnection(){
-  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-  echo $url;
-
-}
+//$conn = new mysqli($server, $username, $password, $db);
 
 function teachToDB($inputMsg) {
 
@@ -27,7 +20,12 @@ function teachToDB($inputMsg) {
 }
 
 function replyFromDB($inputMsg) {
-
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $db = substr($url["path"], 1);
+  $conn = new mysqli($server, $username, $password, $db);
   // Check connection
   if (mysqli_connect_errno()){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -35,7 +33,7 @@ function replyFromDB($inputMsg) {
   $result = "ควยไรมึง";
 
   //execute the SQL query and return records
-   $sql = "SELECT * FROM linebot";
+   $sql = 'SELECT * FROM linebot';
   //
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
