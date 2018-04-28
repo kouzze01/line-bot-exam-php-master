@@ -41,11 +41,11 @@ function replyFromDB($inputMsg) {
   if ($queryrResult) {
     // output data of each row
     $conn->close();
-    
+
     return $queryrResult;
 
   } else {
-      echo "0 results";
+      return "0 results";
   }
 
   // if ($result->num_rows > 0) {
@@ -63,9 +63,9 @@ function replyFromDB($inputMsg) {
   //     echo "0 results";
   //     return $replyTeachMessage;
   // }
-  $conn->close();
+//  $conn->close();
 
-  return $result;
+  //return $result;
 
 
 }
