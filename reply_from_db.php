@@ -2,19 +2,60 @@
 
 // //
 
-$replyTeachMessageSuccess = "เราเข้าใจนายแล้ว";
+
 // DB Connection //
 
 //echo $url." ".$server." ".$username." ".$password." ".$db;
 //$conn = new mysqli($server, $username, $password, $db);
+function startsWith($haystack, $needle)
+{
+     $length = strlen($needle);
+     return (substr($haystack, 0, $length) === $needle);
+}
 
-function teachToDB($inputMsg) {
+function endsWith($haystack, $needle)
+{
+    $length = strlen($needle);
 
-  return $replyTeachMessageSuccess;
+    return $length === 0 ||(substr($haystack, -$length) === $needle);
+}
+
+function get_string_between($string, $start, $end){
+    $string = ' ' . $string;
+    $ini = strpos($string, $start);
+    if ($ini == 0) return '';
+    $ini += strlen($start);
+    $len = strpos($string, $end, $ini) - $ini;
+    return substr($string, $ini, $len);
+}
+
+function teachToDB($inputMsg,$replyStr) {
+  $replyTeachMessageSuccess = "เราเข้าใจนายแล้ว";
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $db = substr($url["path"], 1);
+
+  $conn = new mysqli($server, $username, $password, $db);
+  $conn->set_charset("utf8");
+  // Check connection
+  if (mysqli_connect_errno()){
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+  $sql = "INSERT INTO linebot (`InputMassage`,`ReplyMassage`) VALUES ('".$inputMsg."','".$replyStr."')";
+  $conn->query($sql);
+  if ($queryrResult) {
+     $conn->close();
+    return $replyTeachMessageSuccess;
+  }else{
+     $conn->close();
+    return "ไม่สามารถเพิ่มข้อมูลได้อ่ะ";
+  }
 }
 
 function replyFromDB($inputMsg) {
-  $replyTeachMessage = "คือไรอ่ะ งง สอนเราหน่อยใช้คำสั่ง : \"input(\"ข้อความถาม\",\"ข้อความตอบ\")\"";
+  $replyTeachMessage = "คือไรอ่ะ งง สอนเราหน่อยใช้คำสั่ง : input(\"ข้อความถาม\",\"ข้อความตอบ\")";
   $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
   $server = $url["host"];
   $username = $url["user"];
