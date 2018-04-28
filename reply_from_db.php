@@ -11,7 +11,8 @@ $server = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
-echo $url." ".$server." ".$username." ".$password." ".$db;
+//echo $url." ".$server." ".$username." ".$password." ".$db;
+$conn = new mysqli($server, $username, $password, $db);
 
 testConnection();
 function testConnection(){
@@ -26,7 +27,7 @@ function teachToDB($inputMsg) {
 }
 
 function replyFromDB($inputMsg) {
-  $conn = new mysqli($server, $username, $password, $db);
+
   // Check connection
   if (mysqli_connect_errno()){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
