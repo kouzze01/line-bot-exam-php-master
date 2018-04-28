@@ -1,6 +1,7 @@
 <?php // callback.php
 
 require "vendor/autoload.php";
+require "reply_from_db.php";
 require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
 $access_token = 'LGHmeErIoWEVY15w4l5sHPIKhEDSlf2Q8HQ77pBMEKwu9l5DQ4A0ZTepyDD4DnGR6JuIqU6tVtNhBmHL+oF+OVj9HCPXZz0doP0cxmY9LpdslVwyzEIerZWbNt7gYkVmjBYgB7F0fYxufc5Ux0VNgAdB04t89/1O/w1cDnyilFU=';
@@ -19,13 +20,23 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			//$text = $event['source']['userId'];
 			$text = $event['message']['text'];
+			$replyTextMsg = replyFromDB($text);
+
+			// Reply message Logic //
+
+
+			//  End Reply message Logic  //
+
+
+
+
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text
+				'text' => $replyTextMsg
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
