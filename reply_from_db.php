@@ -26,6 +26,7 @@ function replyFromDB($inputMsg) {
   $password = $url["pass"];
   $db = substr($url["path"], 1);
   $conn = new mysqli($server, $username, $password, $db);
+  error_log("id: " . $url. " - Name: " . $server. " " .$username. "<br> " .$password. "<br> " .$db, 0);
   // Check connection
   if (mysqli_connect_errno()){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
