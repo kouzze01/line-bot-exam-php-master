@@ -42,9 +42,13 @@ function replyFromDB($inputMsg) {
   if (mysqli_num_rows($queryrResult)>0) {
     // output data of each row
     //$returnResult = mysqli_num_rows($queryrResult);
-    $row = $queryrResult->fetch_array(MYSQLI_NUM);
-    $rand_keys = array_rand($row, 1);
-    $textReply = $row[$rand_keys];
+    // Cycle through results
+    $group_arr = [];
+     while ($row = $queryrResult->fetch_object()){
+         $group_arr[] = $row;
+     }
+    $rand_keys = array_rand($group_arr, 1);
+    $textReply = $group_arr[$rand_keys];
     error_log(serialize($textReply));
     mysqli_free_result($queryrResult);
     return serialize($textReply);
