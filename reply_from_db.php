@@ -7,12 +7,11 @@ $replyTeachMessageSuccess = "เราเข้าใจนายแล้ว";
 // DB Connection //
 
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-//$server = $url["host"];
-$server = 'localhost';
+$server = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
+
 
 
 
@@ -22,17 +21,17 @@ function teachToDB($inputMsg) {
 }
 
 function replyFromDB($inputMsg) {
-  $conn = mysqli_connect($server, $username, $password, $db);
+  $conn = new mysqli($server, $username, $password, $db);
   // Check connection
   if (mysqli_connect_errno()){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-
+  $result = "ควยไรมึง";
 
   //execute the SQL query and return records
-  $sql = "SELECT ID,InputMassage,ReplyMassage FROM linebot where InputMassage=".$inputMsg;
-
-  $result = mysqli_query($conn,$sql);
+  // $sql = "SELECT ID,InputMassage,ReplyMassage FROM linebot where InputMassage=".$inputMsg;
+  //
+  // $result = mysqli_query($conn,$sql);
 
   // if ($result->num_rows > 0) {
   //     // output data of each row
@@ -49,7 +48,7 @@ function replyFromDB($inputMsg) {
   //     echo "0 results";
   //     return $replyTeachMessage;
   // }
-  mysqli_close($con);
+  mysqli_close($conn);
 
   return $result;
 
