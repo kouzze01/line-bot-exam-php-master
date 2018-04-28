@@ -20,15 +20,20 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			//$text = $event['source']['userId'];
 			$text = $event['message']['text'];
-			if(startsWith($text,"input(\"")){
-				$inputStr = get_string_between($text,'input("','",');
-				$replyStr = get_string_between($text,',"','")');
-				$replyTextMsg = teachToDB($inputStr,$replyStr);
+			if($text=='สมหมาย'){
+				$replyTextMsg = "ถ้าอยากเรียกใช้ สมหมาย ให้ใส่ ! ข้างหน้าหน้าข้อความนะจ๊ะ";
 			}else{
-				if(startsWith($text,"!")){
-					$replyTextMsg = replyFromDB($text);
-				}
+					if(startsWith($text,"input(\"")){
+						$inputStr = get_string_between($text,'input("','",');
+						$replyStr = get_string_between($text,',"','")');
+						$replyTextMsg = teachToDB($inputStr,$replyStr);
+					}else{
+						if(startsWith($text,"!")){
+							$replyTextMsg = replyFromDB($text);
+						}
+					}
 			}
+
 
 			// Reply message Logic //
 
