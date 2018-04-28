@@ -44,8 +44,8 @@ function replyFromDB($inputMsg) {
     //$returnResult = mysqli_num_rows($queryrResult);
     $row = $queryrResult->fetch_all();
     $rand_keys = array_rand($row, 1);
-    $textReply = $row[$rand_keys[0]];
-    error_log($rand_keys);
+    $textReply = $row[$rand_keys];
+    error_log($textReply);
     return $textReply['ReplyMassage'];
 
 
