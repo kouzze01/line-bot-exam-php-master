@@ -44,7 +44,7 @@ function teachToDB($inputMsg,$replyStr) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
   $sql = "INSERT INTO linebot (`InputMassage`,`ReplyMassage`) VALUES ('".$inputMsg."','".$replyStr."')";
-  $conn->query($sql);
+  $queryrResult = $conn->query($sql);
   if ($queryrResult) {
      $conn->close();
     return $replyTeachMessageSuccess;
