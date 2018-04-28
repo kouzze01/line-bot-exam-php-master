@@ -32,26 +32,26 @@ function replyFromDB($inputMsg) {
   //execute the SQL query and return records
   $sql = "SELECT ID,InputMassage,ReplyMassage FROM linebot where InputMassage=".$inputMsg;
 
-  $result = $conn->query($sql);
+  $result = mysqli_query($conn,$sql);
 
-  if ($result->num_rows > 0) {
-      // output data of each row
-      // while($row = $result->fetch_assoc()) {
-      //     echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-      // }
-      // Else Data Exits //
-      $rand_keys = array_rand($result, 1);
-      $textReply = $result[$rand_keys[0]];
-      //close the connection
-      mysql_close($dbhandle);
-      return $textReply['ReplyMassage'];
-  } else {
-      echo "0 results";
-      return $replyTeachMessage;
-  }
+  // if ($result->num_rows > 0) {
+  //     // output data of each row
+  //     // while($row = $result->fetch_assoc()) {
+  //     //     echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+  //     // }
+  //     // Else Data Exits //
+  //     $rand_keys = array_rand($result, 1);
+  //     $textReply = $result[$rand_keys[0]];
+  //     //close the connection
+  //     mysql_close($dbhandle);
+  //     return $textReply['ReplyMassage'];
+  // } else {
+  //     echo "0 results";
+  //     return $replyTeachMessage;
+  // }
   $conn->close();
 
-
+  return $result;
 
 
 }
