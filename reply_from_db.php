@@ -41,7 +41,7 @@ function replyFromDB($inputMsg) {
   if ($queryrResult) {
     // output data of each row
     $returnResult = mysqli_num_rows($queryrResult);
-    $queryrResult->close();
+    mysqli_free_result($queryrResult);
     return $returnResult;
 
 
