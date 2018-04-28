@@ -13,7 +13,7 @@ $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 
-
+replyFromDB('555');
 
 function teachToDB($inputMsg) {
 
@@ -29,13 +29,13 @@ function replyFromDB($inputMsg) {
   $result = "ควยไรมึง";
 
   //execute the SQL query and return records
-   $sql = "SELECT ID,InputMassage,ReplyMassage FROM linebot";
+   $sql = "SELECT * FROM linebot";
   //
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     // output data of each row
       while($row = $result->fetch_assoc()) {
-          $result = "id: " . $row["id"]. " - Name: " . $row["InputMassage"]. " " . $row["ReplyMassage"]. "<br>";
+          $result = "id: " . $row["ID"]. " - Name: " . $row["InputMassage"]. " " . $row["ReplyMassage"]. "<br>";
       }
   } else {
       echo "0 results";
