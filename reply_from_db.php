@@ -31,11 +31,15 @@ function replyFromDB($inputMsg) {
   //execute the SQL query and return records
    $sql = "SELECT ID,InputMassage,ReplyMassage FROM linebot where InputMassage=".$inputMsg;
   //
-   if($result = mysqli_query($conn,$sql)){
-
-     $result = mysqli_fetch_row($result);
-
-   }
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    // output data of each row
+      while($row = $result->fetch_assoc()) {
+          echo "id: " . $row["id"]. " - Name: " . $row["InputMassage"]. " " . $row["ReplyMassage"]. "<br>";
+      }
+  } else {
+      echo "0 results";
+  }
 
   // if ($result->num_rows > 0) {
   //     // output data of each row
@@ -52,7 +56,7 @@ function replyFromDB($inputMsg) {
   //     echo "0 results";
   //     return $replyTeachMessage;
   // }
-  mysqli_close($conn);
+  $conn->close();
 
   return $result;
 
