@@ -25,6 +25,7 @@ function replyFromDB($inputMsg) {
   $username = $url["user"];
   $password = $url["pass"];
   $db = substr($url["path"], 1);
+
   $conn = new mysqli($server, $username, $password, $db);
   error_log("id: " . $url. " - Name: " . $server. " " .$username. "<br> " .$password. "<br> " .$db, 0);
   // Check connection
@@ -36,10 +37,11 @@ function replyFromDB($inputMsg) {
   //execute the SQL query and return records
    $sql = 'SELECT * FROM linebot where InputMessage='.$inputMsg;
   //
-  $result = $conn->query($sql);
-  if ($result->num_rows > 0) {
+  $queryrResult = $conn->query($sql);
+  if ($queryrResult->num_rows > 0) {
     // output data of each row
     $conn->close();
+    $result = $sql;
     return $sql;
 
   } else {
