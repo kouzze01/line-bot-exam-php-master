@@ -27,6 +27,7 @@ function replyFromDB($inputMsg) {
   $db = substr($url["path"], 1);
 
   $conn = new mysqli($server, $username, $password, $db);
+  $conn->set_charset("utf8");
   error_log("id: " . $url. " - Name: " . $server. " " .$username. "<br> " .$password. "<br> " .$db, 0);
   // Check connection
   if (mysqli_connect_errno()){
@@ -41,7 +42,7 @@ function replyFromDB($inputMsg) {
   if (mysqli_num_rows($queryrResult)>0) {
     // output data of each row
     $returnResult = mysqli_num_rows($queryrResult);
-  
+
     return $returnResult;
 
 
