@@ -20,12 +20,13 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			//$text = $event['source']['userId'];
 			$text = $event['message']['text'];
-			if(startsWith($text,'input(')){
+			if(startsWith($text,"input(\"")){
 				$inputStr = get_string_between($text,'input("','",');
 				$replyStr = get_string_between($text,',"','")');
 				$replyTextMsg = teachToDB($inputStr,$replyStr);
+			}else{
+				$replyTextMsg = replyFromDB($text);
 			}
-			$replyTextMsg = replyFromDB($text);
 
 			// Reply message Logic //
 
