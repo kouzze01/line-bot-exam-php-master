@@ -52,7 +52,7 @@ function replyFromDB($inputMsg) {
 
     error_log($textReply->ReplyMassage);
     mysqli_free_result($queryrResult);
-    return $textReply;
+    return $textReply->ReplyMassage;
 
 
   } else {
