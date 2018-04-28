@@ -34,7 +34,7 @@ function replyFromDB($inputMsg) {
    $sql = "SELECT * FROM linebot where InputMassage='".$inputMsg."'";
   //
   $queryrResult = $conn->query($sql);
-  if ($queryrResult === TRUE) {
+  if (mysqli_num_rows($queryrResult)>0) {
     // output data of each row
     //$returnResult = mysqli_num_rows($queryrResult);
     // Cycle through results
@@ -47,10 +47,12 @@ function replyFromDB($inputMsg) {
 
     error_log($textReply->ReplyMassage);
     mysqli_free_result($queryrResult);
+     $conn->close();
     return $textReply->ReplyMassage;
 
 
   } else {
+     $conn->close();
       return $replyTeachMessage;
   }
 
