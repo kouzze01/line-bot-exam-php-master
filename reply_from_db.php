@@ -50,7 +50,7 @@ function replyFromDB($inputMsg) {
     $rand_keys = array_rand($group_arr, 1);
     $textReply = $group_arr[$rand_keys];
 
-    error_log($textReply{'ReplyMassage'});
+    error_log($textReply->ReplyMassage);
     mysqli_free_result($queryrResult);
     return $textReply;
 
