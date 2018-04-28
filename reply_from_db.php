@@ -49,10 +49,10 @@ function replyFromDB($inputMsg) {
      }
     $rand_keys = array_rand($group_arr, 1);
     $textReply = $group_arr[$rand_keys];
-    $data = json_decode(serialize($textReply), true);
-    error_log($data['ReplyMassage']);
+
+    error_log($textReply);
     mysqli_free_result($queryrResult);
-    return $data['ReplyMassage'];
+    return $textReply;
 
 
   } else {
