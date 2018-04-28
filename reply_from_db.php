@@ -35,7 +35,7 @@ function replyFromDB($inputMsg) {
   $result = "ควยไรมึง";
 
   //execute the SQL query and return records
-   $sql = 'SELECT * FROM linebot where InputMessage='.$inputMsg;
+   $sql = "SELECT * FROM linebot where InputMassage='".$inputMsg."'";
   //
   $queryrResult = $conn->query($sql);
   if ($queryrResult->num_rows > 0) {
