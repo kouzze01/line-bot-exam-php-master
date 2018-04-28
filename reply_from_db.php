@@ -38,15 +38,15 @@ function replyFromDB($inputMsg) {
    $sql = "SELECT * FROM linebot where InputMassage='".$inputMsg."'";
   //
   $queryrResult = $conn->query($sql);
-  if ($queryrResult) {
+  if (mysqli_num_rows($queryrResult)>0) {
     // output data of each row
     $returnResult = mysqli_num_rows($queryrResult);
-    mysqli_free_result($queryrResult);
+  
     return $returnResult;
 
 
   } else {
-      return "0 results";
+      return $inputMsg;
   }
 
   // if ($result->num_rows > 0) {
