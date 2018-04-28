@@ -35,7 +35,7 @@ function replyFromDB($inputMsg) {
   if ($result->num_rows > 0) {
     // output data of each row
       while($row = $result->fetch_assoc()) {
-          echo "id: " . $row["id"]. " - Name: " . $row["InputMassage"]. " " . $row["ReplyMassage"]. "<br>";
+          $result = "id: " . $row["id"]. " - Name: " . $row["InputMassage"]. " " . $row["ReplyMassage"]. "<br>";
       }
   } else {
       echo "0 results";
