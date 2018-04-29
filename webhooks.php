@@ -29,11 +29,13 @@ if (!is_null($events['events'])) {
 						$inputStr = get_string_between($text,'input("','",');
 						$replyStr = get_string_between($text,',"','")');
 						$replyTextMsg = teachToDB($inputStr,$replyStr);
-					}else{
+					}else $replyTextMsg = replyFromDB($text);
+					/*{
 						if(startsWith($text,"!")){
 							$replyTextMsg = replyFromDB($text);
-						}else $replyTextMsg = replyFromDB($text);
-					}
+						}
+					}*/
+
 					/*else{
 						if(endWith($text,"=")){
 							$replyTextMsg = "คำนวณ";
