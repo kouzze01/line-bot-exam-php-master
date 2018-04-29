@@ -32,8 +32,6 @@ if (!is_null($events['events'])) {
 					}else{
 						if(startsWith($text,"!")){
 							$replyTextMsg = replyFromDB($text);
-						}else (endWith($text,"=")){
-							$replyTextMsg = replyFromDB($text);
 						}
 					}/*else{
 						if(endWith($text,"=")){

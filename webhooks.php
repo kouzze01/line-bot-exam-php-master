@@ -30,7 +30,7 @@ if (!is_null($events['events'])) {
 						$replyStr = get_string_between($text,',"','")');
 						$replyTextMsg = teachToDB($inputStr,$replyStr);
 					}else{
-						if(startsWith($text,"!")){
+						if(startsWith($text,"")){
 							$replyTextMsg = replyFromDB($text);
 						}
 					}/*else{
