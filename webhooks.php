@@ -32,6 +32,8 @@ if (!is_null($events['events'])) {
 					}else{
 						if(startsWith($text,"!")){
 							$replyTextMsg = replyFromDB($text);
+						}else (endWith($text,"=")){
+							$replyTextMsg = "คำนวณ";
 						}
 					}/*else{
 						if(endWith($text,"=")){
