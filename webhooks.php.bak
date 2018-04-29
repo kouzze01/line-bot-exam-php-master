@@ -33,6 +33,10 @@ if (!is_null($events['events'])) {
 						if(startsWith($text,"!")){
 							$replyTextMsg = replyFromDB($text);
 						}
+					}else{
+						if(endWith($text,"=")){
+							$replyTextMsg = "คำนวณ";
+						}
 					}
 			}
 
