@@ -23,16 +23,16 @@ if (!is_null($events['events'])) {
 			//$text = $event['source']['userId'];
 			$text = $event['message']['text'];
 			if(strpos($text, 'สมหมาย') !== false){ // ($text contains 'สมหมาย')
-				$replyTextMsg = "ถ้าอยากคุยกับ สมหมาย ให้ใส่ ! ข้างหน้าหน้าข้อความนะจ๊ะ";
+				$replyTextMsg = "ว่าไงจ๊ะ";
 			}else{
 					if(startsWith($text,"input(\"")){
 						$inputStr = get_string_between($text,'input("','",');
 						$replyStr = get_string_between($text,',"','")');
 						$replyTextMsg = teachToDB($inputStr,$replyStr);
 					}else{
-						if(startsWith($text,"!")){
+						//if(startsWith($text,"!")){
 							$replyTextMsg = replyFromDB($text);
-						}
+						//}
 					}
 					/*else{
 						if(endWith($text,"=")){
