@@ -22,7 +22,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			//$text = $event['source']['userId'];
 			$text = $event['message']['text'];
-			if($text=='สมหมาย'){
+			if($text contains'สมหมาย'){
 				$replyTextMsg = "ถ้าอยากเรียกใช้ สมหมาย ให้ใส่ ! ข้างหน้าหน้าข้อความนะจ๊ะ";
 			}else{
 					if(startsWith($text,"input(\"")){
@@ -80,11 +80,11 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			$messages = [
+			/*$messages = [
 				'type' => 'sticker',
 				'packageId' => '1',
 				'stickerId' => '131'
-			];
+			];*/
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';

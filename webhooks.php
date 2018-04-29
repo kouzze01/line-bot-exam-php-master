@@ -22,7 +22,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			//$text = $event['source']['userId'];
 			$text = $event['message']['text'];
-			if($text=='สมหมาย'){
+			if($text contains 'สมหมาย'){
 				$replyTextMsg = "ถ้าอยากเรียกใช้ สมหมาย ให้ใส่ ! ข้างหน้าหน้าข้อความนะจ๊ะ";
 			}else{
 					if(startsWith($text,"input(\"")){
