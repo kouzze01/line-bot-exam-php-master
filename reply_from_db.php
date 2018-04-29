@@ -72,7 +72,7 @@ function replyFromDB($inputMsg) {
   $result = "ควยไรมึง";
 
   //execute the SQL query and return records
-  $sql = "SELECT * FROM linebot where InputMassage LIKE'%".$inputMsg."%'";
+  $sql = "SELECT * FROM linebot where InputMassage LIKE'".$inputMsg."'";
   //
   $queryrResult = $conn->query($sql);
   if (mysqli_num_rows($queryrResult)>0) {
