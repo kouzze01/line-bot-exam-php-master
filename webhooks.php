@@ -33,7 +33,7 @@ if (!is_null($events['events'])) {
 						if(startsWith($text,"!")){
 							$replyTextMsg = replyFromDB($text);
 						}else (endWith($text,"=")){
-							$replyTextMsg = "คำนวณ";
+							$replyTextMsg = replyFromDB($text);
 						}
 					}/*else{
 						if(endWith($text,"=")){
