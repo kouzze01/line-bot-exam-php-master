@@ -23,7 +23,7 @@ if (!is_null($events['events'])) {
 			//$text = $event['source']['userId'];
 			$text = $event['message']['text'];
 			if(strpos($text, 'สมหมาย') !== false){ // ($text contains 'สมหมาย')
-				$replyTextMsg = "ว่าไงจ๊ะ";
+				$replyTextMsg = "ว่าไงสหาย";
 			}else{
 					if(startsWith($text,"input(\"")){
 						$inputStr = get_string_between($text,'input("','",');
